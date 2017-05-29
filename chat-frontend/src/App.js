@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import Chatroom from './components/Chatroom'
-import './App.css';
 
 class App extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      selectedChatroom: 1,
+      chatrooms: []
+    }
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <Chatroom />
+      <div className="ui grid container">
+        <Chatroom selectedChatroom={this.state.selectedChatroom} />
       </div>
     );
   }

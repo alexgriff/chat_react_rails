@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
 
+
   def create
     # message = Message.first
     message = Message.new(content: params[:content])

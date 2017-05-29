@@ -26,13 +26,25 @@ class MessageForm extends Component {
 
   render() {
     return (
-      <div className="MessageForm">
+      <div className="ui six wide column">
         <form onSubmit={(ev) => this.handleSubmit(ev)}>
-          <input
-            type="text"
-            value={this.state.content}
-            onChange={(ev) => this.handleChange(ev)}
-          />
+          <div className="ui icon fluid huge input">
+            <i className="talk icon"></i>
+            <input
+              type="text"
+              value={this.state.content}
+              placeholder="Say something nice..."
+              onChange={(ev) => this.handleChange(ev)}
+            />
+          </div>
+          <div className="ui input">
+            <select name="" id="">
+              <option value="1"></option>
+              <option value="2"></option>
+              <option value="3"></option>
+              <option value="4"></option>
+            </select>
+          </div>
         </form>
       </div>
     )
