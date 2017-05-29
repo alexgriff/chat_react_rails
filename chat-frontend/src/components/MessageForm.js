@@ -18,6 +18,7 @@ class MessageForm extends Component {
   }
 
   handleSubmit(ev) {
+    console.log('in handleSubmit');
     ev.preventDefault()
     this.props.onSubmit(this.state)
     axios.post(`http://${window.location.hostname}:3000/messages`, {content: this.state.content})
@@ -37,14 +38,23 @@ class MessageForm extends Component {
               onChange={(ev) => this.handleChange(ev)}
             />
           </div>
+          {/* <div>
+            Select your Username or Join this Chatroom:
+          </div>
           <div className="ui input">
             <select name="" id="">
-              <option value="1"></option>
-              <option value="2"></option>
-              <option value="3"></option>
-              <option value="4"></option>
+              {
+                this.props.users.map( user => (
+                  <option key={user.id} value={user.id}>
+                    {user.username}
+                  </option>
+                ))
+              }
             </select>
           </div>
+          <div className="ui input">
+            <input type="" placeholder="Enter a new username"/>
+          </div> */}
         </form>
       </div>
     )

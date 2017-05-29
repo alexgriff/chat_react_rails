@@ -1,8 +1,9 @@
 import React from 'react'
 
 export default (props) => {
-  const messages = props.messages.map(msg => (
-    <div key={msg.id} className="item">
+  const messages = props.messages.map(msg => {
+    console.log(msg);
+    return (<div key={msg.id} className="item">
       <div className="content">
         <div className="header">
           {msg.username}
@@ -12,7 +13,8 @@ export default (props) => {
         </div>
       </div>
     </div>
-  ))
+  )
+  })
 
   return (
     <div className="ui ten wide column">

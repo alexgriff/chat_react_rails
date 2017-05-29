@@ -12,17 +12,19 @@ class Chatroom extends Component {
     this.socket = io(`${window.location.hostname}:5001`)
     this.state = {
       messages: [],
-      topic: ''
+      topic: '',
+      users: []
     }
   }
 
   componentDidMount() {
     axios.get(`http://${window.location.hostname}:3000/chatrooms/${this.props.selectedChatroom}`)
       .then( response => {
-        const { messages, topic } = response.data
+        const { messages, topic, users } = response.data
         this.setState({
           messages,
-          topic
+          topic,
+          users
          })
       })
 
@@ -36,11 +38,11 @@ class Chatroom extends Component {
   }
 
   render() {
-    const { messages, topic } = this.state
+    const { messages, topic, users } = this.state
     return (
       <div className="row">
         <MessageList topic={ topic } messages={ messages } />
-        <MessageForm onSubmit={(msgState) => this.handleMessageCreate(msgState)}/>
+        <MessageForm users={ users } onSubmit={(msgState) => this.handleMessageCreate(msgState)}/>
       </div>
     )
   }
