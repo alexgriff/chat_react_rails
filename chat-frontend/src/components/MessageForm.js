@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 class MessageForm extends Component {
   constructor(props) {
@@ -6,7 +7,7 @@ class MessageForm extends Component {
 
     this.state = {
       content: '',
-      username: 'JJ'
+      username: ''
     }
   }
 
@@ -19,9 +20,8 @@ class MessageForm extends Component {
   handleSubmit(ev) {
     ev.preventDefault()
     this.props.onSubmit(this.state)
-    this.setState({
-      content: ''
-    })
+    axios.post(`http://${window.location.hostname}:3000/messages`, {content: this.state.content})
+    this.setState({content: ''})
   }
 
   render() {

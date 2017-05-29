@@ -37,6 +37,8 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
+  # https://stackoverflow.com/questions/33511711/configure-redis-connection-on-initialize
+  config.redis_host = 'localhost'
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

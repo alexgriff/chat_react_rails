@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import MessageList from './MessageList'
 import MessageForm from './MessageForm'
+import io from 'socket.io-client'
+
 
 class Chatroom extends Component {
 
   constructor() {
     super()
+    this.socket = io(`${window.location.hostname}:5001`)
     this.state = {
       messages: [
         {
@@ -16,6 +19,13 @@ class Chatroom extends Component {
         }
       ]
     }
+  }
+
+  componentDidMount() {
+    this.socket.on('message-created', (message)=>{
+      console.log("something", message)
+      this.setState({messages: [...this.state.messages, message]})
+    })
   }
 
   handleMessageCreate(msgState) {

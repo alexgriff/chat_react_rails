@@ -6,8 +6,12 @@
     "react-scripts": "1.0.3"
   },
   "dependencies": {
+    "axios": "^0.16.1",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "redis": "^2.7.1",
     "socket.io": "^2.0.1"
   },
   "scripts": {

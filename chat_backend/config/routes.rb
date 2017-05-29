@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  post 'messages/create', to: 'messages#create'
+  post '/messages', to: 'messages#create'
 
   get '/chatrooms', to: 'chatrooms#index'
   get '/chatrooms/:id', to: 'chatrooms#show'
