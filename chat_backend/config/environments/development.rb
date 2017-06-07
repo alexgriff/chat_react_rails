@@ -40,6 +40,12 @@ Rails.application.configure do
   # https://stackoverflow.com/questions/33511711/configure-redis-connection-on-initialize
   config.redis_host = 'localhost'
 
+  config.action_cable.disable_request_forgery_protection = true
+
+  # config.action_cable.allowed_request_origins = ['http://localhost:3001']
+
+  config.action_cable.url = 'ws://localhost:3000/cable'
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
