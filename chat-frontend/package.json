@@ -6,9 +6,11 @@
     "react-scripts": "1.0.3"
   },
   "dependencies": {
+    "actioncable": "^5.1.1",
     "axios": "^0.16.1",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "hiredis": "^0.5.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "redis": "^2.7.1",

@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <div className="ui grid container">
-        <Chatroom selectedChatroom={this.state.selectedChatroom} />
+        <Chatroom cableApp={this.props.cableApp} selectedChatroom={this.state.selectedChatroom} />
       </div>
     );
   }

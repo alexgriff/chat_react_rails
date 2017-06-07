@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
 import MessageList from './MessageList'
 import MessageForm from './MessageForm'
-import io from 'socket.io-client'
 import axios from 'axios'
-
 
 class Chatroom extends Component {
 
   constructor() {
     super()
-    this.socket = io(`${window.location.hostname}:5001`)
     this.state = {
       messages: [],
       topic: '',
@@ -28,13 +25,14 @@ class Chatroom extends Component {
          })
       })
 
-    this.socket.on('message-created', (message)=>{
-      this.setState({messages: [message, ...this.state.messages,]})
+    this.props.cableApp.messages = this.props.cableApp.cable.subscriptions.create('MessagesChannel', 
+    { 
+      received: (message) => this.setState({ messages: [message, ...this.state.messages,] }) 
     })
   }
 
   handleMessageCreate(msgState) {
-    console.log(msgState);
+    this.props.cableApp.messages.send({content: msgState.content})
   }
 
   render() {

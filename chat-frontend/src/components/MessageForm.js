@@ -18,7 +18,6 @@ class MessageForm extends Component {
   }
 
   handleSubmit(ev) {
-    console.log('in handleSubmit');
     ev.preventDefault()
     this.props.onSubmit(this.state)
     axios.post(`http://${window.location.hostname}:3000/messages`, {content: this.state.content})
