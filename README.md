@@ -42,9 +42,9 @@ class MessagesChannel < ApplicationCable::Channel
 end
 ```
 
-`subscribed` is opening a channel for our client to connect to. The only thing we're doing in this method is opening the channel and naming the channel with `stream_from`. We could have chosen any string, but we decided to call it 'messages'. When our client connects to the `MessagesChannel` it will run the `subscribed` method which will listen to the 'messages' channel. This string of 'messages' will be used to reference this open channel with our client. So when we update something in our `receive` method we need to tell our connection to broadcast that change over the 'messages' channel that was opened in `subscribe`.
+**Note:** Your payload argument should be a JSON object, meaning that each key is a **string** not a symbol!
 
-**Notes:** we created our own serializer, hence why we're calling MessageSerializer.new(message). If you're using `active_model_serializer` this will be different.
+`subscribed` is opening a channel for our client to connect to. The only thing we're doing in this method is opening the channel and naming the channel with `stream_from`. We could have chosen any string, but we decided to call it 'messages'. When our client connects to the `MessagesChannel` it will run the `subscribed` method which will listen to the 'messages' channel. This string of 'messages' will be used to reference this open channel with our client. So when we update something in our `receive` method we need to tell our connection to broadcast that change over the 'messages' channel that was opened in `subscribe`.
 
 ### React Setup and Notes
 
